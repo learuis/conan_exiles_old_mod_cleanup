@@ -39,7 +39,7 @@ def index():
             outputstring += 'PRAGMA integrity_check;'
 
             return render_template('output.html', filename='GeneratedSQL.sql', filedata=outputstring,
-                                   badentries=f'{len(result_org)} actors from old mods were found.')
+                                   badentries=f'{len(result_org)} actors from old mods were found. GITHUB')
         else:
             return "No file selected."
 
