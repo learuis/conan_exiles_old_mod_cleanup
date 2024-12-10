@@ -15,7 +15,7 @@ def index():
                                     r'(.*)\n.*\n\[\d+.\d+.\d+-\d+.\d+.\d+.\d+\].* String asset reference '
                                     r'\"None\".*slow.', filedata)
             for x in result_org:
-                print(f'{x}')
+                print(f'{x} test')
                 outputstring += (f'DELETE FROM buildable_health WHERE object_id IN('
                                  f'SELECT DISTINCT object_id FROM buildings WHERE object_id IN ('
                                  f'SELECT DISTINCT object_id FROM properties WHERE object_id IN ('
