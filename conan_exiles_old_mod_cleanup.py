@@ -16,7 +16,7 @@ def index():
                                     r'\"None\".*slow.', filedata)
 
             for x in result_org:
-                print(f'{x} test')
+                print(f'{x}')
                 outputstring += (f'DELETE FROM buildable_health WHERE object_id IN('
                                  f'SELECT DISTINCT object_id FROM buildings WHERE object_id IN ('
                                  f'SELECT DISTINCT object_id FROM properties WHERE object_id IN ('
