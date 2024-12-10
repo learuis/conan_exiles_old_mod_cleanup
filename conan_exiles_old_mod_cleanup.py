@@ -22,20 +22,20 @@ def index():
                                  f'SELECT DISTINCT object_id FROM properties WHERE object_id IN ('
                                  f'SELECT id FROM (SELECT id, trim(substr(class, INSTR(class, \')/BP\'), '
                                  f'length(class)), \'/\') AS name FROM actor_position '
-                                 f'WHERE class LIKE \'{x.strip()}%\'))));<br>')
+                                 f'WHERE class LIKE \'{x.strip()}%\'))));\n')
                 outputstring += '--'
                 outputstring += (f'DELETE FROM buildings WHERE object_id IN('
                                  f'SELECT DISTINCT object_id FROM properties WHERE object_id IN ('
                                  f'SELECT id FROM (SELECT id, trim(substr(class, INSTR(class, \'/BP\'), '
                                  f'length(class)), \'/\') AS name FROM actor_position '
-                                 f'WHERE class LIKE \'{x.strip()}%\')));<br>')
+                                 f'WHERE class LIKE \'{x.strip()}%\')));\n')
                 outputstring += '--'
                 outputstring += (f'DELETE FROM properties WHERE object_id IN('
                                  f'SELECT id FROM (SELECT id, trim(substr(class, INSTR(class, \'/BP\'), '
                                  f'length(class)), \'/\') AS name FROM actor_position '
-                                 f'WHERE class LIKE \'{x.strip()}%\'));<br>')
+                                 f'WHERE class LIKE \'{x.strip()}%\'));\n')
                 outputstring += '--'
-                outputstring += f'DELETE FROM actor_position WHERE class LIKE \'{x.strip()}%\';<br>'
+                outputstring += f'DELETE FROM actor_position WHERE class LIKE \'{x.strip()}%\';\n'
 
             outputstring += '--  // Separator between matches\n'
             outputstring += 'VACUUM;\n'
