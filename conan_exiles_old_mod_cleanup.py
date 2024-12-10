@@ -14,6 +14,7 @@ def index():
             result_org = re.findall(r'\[\d+.\d+.\d+-\d+.\d+.\d+.\d+\].* NameToLoad: '
                                     r'(.*)\n.*\n\[\d+.\d+.\d+-\d+.\d+.\d+.\d+\].* String asset reference '
                                     r'\"None\".*slow.', filedata)
+
             for x in result_org:
                 print(f'{x} test')
                 outputstring += (f'DELETE FROM buildable_health WHERE object_id IN('
@@ -21,20 +22,20 @@ def index():
                                  f'SELECT DISTINCT object_id FROM properties WHERE object_id IN ('
                                  f'SELECT id FROM (SELECT id, trim(substr(class, INSTR(class, \')/BP\'), '
                                  f'length(class)), \'/\') AS name FROM actor_position '
-                                 f'WHERE class LIKE \'{x}%\'))));<br>')
+                                 f'WHERE class LIKE \'{x.strip()}%\'))));<br>')
                 outputstring += '--'
                 outputstring += (f'DELETE FROM buildings WHERE object_id IN('
                                  f'SELECT DISTINCT object_id FROM properties WHERE object_id IN ('
                                  f'SELECT id FROM (SELECT id, trim(substr(class, INSTR(class, \'/BP\'), '
                                  f'length(class)), \'/\') AS name FROM actor_position '
-                                 f'WHERE class LIKE \'{x}%\')));<br>')
+                                 f'WHERE class LIKE \'{x.strip()}%\')));<br>')
                 outputstring += '--'
                 outputstring += (f'DELETE FROM properties WHERE object_id IN('
                                  f'SELECT id FROM (SELECT id, trim(substr(class, INSTR(class, \'/BP\'), '
                                  f'length(class)), \'/\') AS name FROM actor_position '
-                                 f'WHERE class LIKE \'{x}%\'));<br>')
+                                 f'WHERE class LIKE \'{x.strip()}%\'));<br>')
                 outputstring += '--'
-                outputstring += f'DELETE FROM actor_position WHERE class LIKE \'{x}%\';<br>'
+                outputstring += f'DELETE FROM actor_position WHERE class LIKE \'{x.strip()}%\';<br>'
 
             outputstring += '--  // Separator between matches\n'
             outputstring += 'VACUUM;\n'
